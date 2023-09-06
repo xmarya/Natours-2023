@@ -7,7 +7,7 @@ const handleSubmit = (event) => {
 
   const email = event.target.email?.value;
   const password = event.target.password?.value;
-console.log(email, password);
+// console.log(email, password);
   login(email, password);
 
   formEl.reset();
@@ -78,7 +78,7 @@ if (passwordForm)
   const bookingBtn = document.getElementById("bookTour");
 if(bookingBtn)
     bookingBtn.addEventListener("click", event => {
-  console.log("bookingBtn INSIDER");
+  // console.log("bookingBtn INSIDER");
   
       /*
 

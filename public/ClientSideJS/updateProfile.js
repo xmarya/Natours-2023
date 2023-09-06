@@ -35,12 +35,12 @@ import { useFetch } from "./fetchData";
 // Updating using our API and JS:
 
 export const updateTheProfile = async (data, type) => {
-console.log("updateTheProfile INSIDER "+type);
+// console.log("updateTheProfile INSIDER "+type);
 
   try {
     const url = type === "password" ? "updateMyPassword" : "updateMyData";
-    const result = await useFetch(`http://localhost:8080/api/v1/users/${url}`,"PATCH", data, type);
-    console.log(result.status);
+    const result = await useFetch(`/api/v1/users/${url}`,"PATCH", data, type);
+    // console.log(result.status);
 
     if (result.status.trim() === "success") showAlerts("success", `Your ${type}'s been updated successfully !♥`);
     

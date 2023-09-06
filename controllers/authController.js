@@ -142,7 +142,7 @@ exports.protect = catchAsync (async (request, response, next) => {
    
    // 3- checking if user still exists:
    const currentUser = await User.findById(payload.id); // one of the payload contents is the id, that's why we have an access to it .
-   console.log(currentUser);
+  //  console.log(currentUser);
    
    if(!currentUser) return next(new AppError(401, "this user is no loger exist"));
 
@@ -243,14 +243,14 @@ exports.updateMyPassword = catchAsync( async (request, response, next) => {
   // 1- Getting the user from collection:
   // هنا اخذنا المعلومات باستخدام ريكويست.يوزر.آيدي لأن المعلومات هذي متوفرة لنا آلريدي من ميدلوير بروتيكت, فما يحتاج نستخدم ريكويست.بارامز.آيدي
   const user = await User.findById(request.user.id).select("+password");
-  console.log(user);
+  // console.log(user);
   
   // 2- Confirming if the user actually is who he says he is by asking to provide the current password:
   const providedPassword = request.body.currentPassword;
   
   if(!(await user.comparePassword(providedPassword, user.password)))
     {
-      console.log("INSIDE COMPARING IF()");
+      // console.log("INSIDE COMPARING IF()");
       
       return next(new AppError(401, "The provided password does not match the current one. Please make sure to write it correctly"));}
   

@@ -16,6 +16,8 @@ const path = require("path"); // a native built-in module, no need to install .
 const viewRouter = require("./Routes/viewsRoute");
 const cookieParser = require("cookie-parser"); // in order to get access to the cookies that are inside the request .
 
+const compression = require("compression");
+
 // 1) telling express which template engine we are going to use:
 app.set("view engine", "pug");
 
@@ -91,6 +93,8 @@ app.use(
 );
 /*  for ex: if we defined 2 more parameters of sort (sort by duration and sort by price) that will crush our api
 because we're not prepared for recieving mare than one parameters of the same type of fields */
+
+app.use(compression()); // it's going to return a md function which job is compression all the test that is send to the client -images are not included because they are already compressed-
 
 // define a route :
 /**

@@ -98,14 +98,14 @@ const jwtTokenExpiredError = () => {
 };
 
 module.exports = (error, request, response, next) => {
-  console.log(error.stack); // shows us where has the error's happened .
+  // console.log(error.stack); // shows us where has the error's happened .
 
   error.statusCode = error.statusCode || 500;
   error.status = error.status || "error";
   if (process.env.NODE_ENV === "development") {
     errorDevelopment(error, request, response);
   } else if (process.env.NODE_ENV === "production") {
-    console.log("INSIDE MODULE.EXPORTS if(production) " + error.name);
+    // console.log("INSIDE MODULE.EXPORTS if(production) " + error.name);
     // dealing with mongoose errors .
     if (error.name === "CastError") error = dbCastErrorHandler(error); // these type of errors will be marked as isOperational .
 

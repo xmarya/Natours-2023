@@ -11,7 +11,7 @@ console.log("Hello from the CLIENT side");
 */
 
 const locations = JSON.parse(document.getElementById("map").dataset.locations);
-console.log(locations);
+// console.log(locations);
 
 const map = L.map("map", {
   center: [51.505, -0.09],
@@ -19,7 +19,7 @@ const map = L.map("map", {
   zoomControl: false,
   dragging: false,
 });
-console.log(map);
+// console.log(map);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:

@@ -2,10 +2,10 @@ import { showAlerts } from "./alerts.cjs";
 import { useFetch } from "./fetchData";
 
 export const login = async (email, password) => {
-  console.log(email, password);
+  // console.log(email, password);
   
   try {
-    const result = await useFetch("http://localhost:8080/api/v1/users/login", "POST", {email, password});
+    const result = await useFetch("/api/v1/users/login", "POST", {email, password});
 
     if (result.status === "success") setTimeout(() => window.location.replace("/"), 200);
     // setTimeout(() => window.location.assign("/"), 1000); // another way or redirecting the user to the overview page
@@ -19,7 +19,7 @@ export const login = async (email, password) => {
 export const logout = async () => {
   try {
 
-    const result = await useFetch("http://localhost:8080/api/v1/users/logout", "GET");
+    const result = await useFetch("/api/v1/users/logout", "GET");
 
     /*
        just use location.replace instead of assign inorder to discard current page from the history 

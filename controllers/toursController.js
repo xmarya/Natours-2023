@@ -73,7 +73,7 @@ Adam's answer in lec:116:
 const catchAsync = asyncFunction => {
   return (request, response, next) => {
     asyncFunction(request, response, next).catch(error => {
-      console.log(error);
+      // console.log(error);
      next(error)});
   }
   /*
@@ -245,7 +245,7 @@ exports.uploadTourImages = upload.fields([
 exports.resizeTourImages = catchAsync (async (request, response, next) => {
   // console.log("resizeTourImages INSIDER 1 ",request.files);
   if(request.files.imageCover) {
-    console.log("resizeTourImages if() INSIDER");
+    // console.log("resizeTourImages if() INSIDER");
     
   // const imageCoverFilename = `tour-${request.params.id}-${Date.now()}-cover.jpeg`;
   request.body.imageCover = `tour-${request.params.id}-${Date.now()}-cover.jpeg`;  
@@ -267,7 +267,7 @@ exports.resizeTourImages = catchAsync (async (request, response, next) => {
     // 2) Looping over the array of images :
     request.body.images = [];
     await Promise.all(request.files.images.map(async(file, index) => {
-      console.log("PROMIS.ALL INSIDER", file, index);
+      // console.log("PROMIS.ALL INSIDER", file, index);
       
       const filename = `tour-${request.params.id}-${Date.now()}-${index+1}.jpeg`;
       await sharp(file.buffer)
@@ -279,7 +279,7 @@ exports.resizeTourImages = catchAsync (async (request, response, next) => {
       request.body.images.push(filename);
     }));
   
-    console.log("resizeTourImages INSIDER 2 ", request.body);
+    // console.log("resizeTourImages INSIDER 2 ", request.body);
     
   
     /*

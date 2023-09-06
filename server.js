@@ -9,18 +9,18 @@ const app = require(`${__dirname}/app.js`);
 const db = process.env.DATABASE_LOCAL;
 
 // this connect method is returing a promise so we have to handle it using then.
-mongoose.connect(db).then(() => console.log("is it connected ?"));
+// mongoose.connect(db).then(() => console.log("is it connected ?"));
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log("===================== Welcome to " + db + " on port "+port+" =====================");
-  console.log("Start");
+  // console.log("===================== Welcome to " + db + " on port "+port+" =====================");
+  // console.log("Start");
 });
 
 // anytime there is an unhandled rejection of a promise (async functions) somewhere in the application,
 // this piece of code makes proccess obj will emitt an obj called unhandled rejection
 process.on("unhandledRejection", (error) => {
-  console.log(error.name, error.message);
+  // console.log(error.name, error.message);
   /*
   by doing server.close(),
   we give the server, basically time to finish all the request
@@ -35,7 +35,7 @@ process.on("unhandledRejection", (error) => {
 // anytime there is an uncaught exception (a sync function) somewhere in the application,
 // this piece of code makes proccess obj will emitt an obj called unhandled rejection
 process.on("uncaughtException", (error) => {
-  console.log(error.name, error.message);
+  // console.log(error.name, error.message);
   server.close(() => {
     process.exit(1); // killing code .
   });

@@ -77,7 +77,7 @@ reviewSchema.pre(/^find/, function (next) {
 
 reviewSchema.statics.calcAverageRatings = async function(tourId) {
 
-  console.log("calcAverageRatings INSIDER :");
+  // console.log("calcAverageRatings INSIDER :");
   
   // here, in this line, this is pointing to the model .
   const stats = await this.aggregate([ // the stats will become an array because of aggregate .
@@ -90,14 +90,14 @@ reviewSchema.statics.calcAverageRatings = async function(tourId) {
       $group: {_id: "$tour", nRatings: {$sum: 1}, avgRatings: {$avg: "$rating"}}
     }
   ]); 
-  console.log(stats);
-  console.log(stats.lenght);
+  // console.log(stats);
+  // console.log(stats.lenght);
   
 
   // 3) Presisting the number of ratings and ratings average
   // in the tour doc:
   if(stats.lenght > 0) {
-    console.log("if stats.lenght");
+    // console.log("if stats.lenght");
     
     await Tour.findByIdAndUpdate(tourId, {
     ratingsQuantity: stats[0].nRatings,
@@ -105,7 +105,7 @@ reviewSchema.statics.calcAverageRatings = async function(tourId) {
   });
 }
   else {
-    console.log("else stats.lenght");
+    // console.log("else stats.lenght");
     
     await Tour.findByIdAndUpdate(tourId, {
     ratingsQuantity: 0,
@@ -113,7 +113,7 @@ reviewSchema.statics.calcAverageRatings = async function(tourId) {
     });
   }
 
-  console.log(stats);
+  // console.log(stats);
 }
 
 /*
@@ -133,9 +133,9 @@ reviewSchema.statics.calcAverageRatings = async function(tourId) {
   and then store the result on the tour.
 */
 reviewSchema.post("save", function() { //post() has no access to next() md .
-  console.log(this.construtor.calcAverageRatings);
-  console.log(this.construtor.calcAverageRatings(this.tour));
-  console.log("reviewSchema.post() INSIDER:");
+  // console.log(this.construtor.calcAverageRatings);
+  // console.log(this.construtor.calcAverageRatings(this.tour));
+  // console.log("reviewSchema.post() INSIDER:");
   
   
   /*

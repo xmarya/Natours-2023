@@ -150,7 +150,7 @@ userSchema.methods.randomToken = function() {
   this.passwordResetToken = crypto.createHash("sha256").update(randomToken).digest("hex");
   this.passwordResetExpires = Date.now() + 90 * 60 * 1000; // I want the token to last for 1m and half (90s) .
 
-  console.log({randomToken}, this.passwordResetToken);
+  // console.log({randomToken}, this.passwordResetToken);
   
 
   return randomToken;

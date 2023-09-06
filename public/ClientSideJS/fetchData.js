@@ -9,7 +9,7 @@ const timeout = (sec) =>
   });
 
 export const useFetch = async (url, methodType, uploadData = null, type ) => {
-  console.log("useFetch INSIDER",uploadData);
+  // console.log("useFetch INSIDER",uploadData);
   
   let options;
 
@@ -29,7 +29,7 @@ export const useFetch = async (url, methodType, uploadData = null, type ) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(uploadData),
   };
-  console.log(options.method, options.body);
+  // console.log(options.method, options.body);
 
 }
 
