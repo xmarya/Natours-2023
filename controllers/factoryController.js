@@ -88,7 +88,7 @@ exports.getOne = (Model, popOp) => catchAsync( async(request, response, next) =>
     // console.log(query);
     
     if(popOp) query = query.populate(popOp).exec();
-    
+   
     const doc = await query;
 
     if(!doc) return next(new AppError(404,"No document is associated with this id"));
