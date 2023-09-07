@@ -1,6 +1,4 @@
 const APIFeature = (request, response, model) => {
-
-  console.log("INSIDE APIFEATURES");
       
     //In Mongoose version 6, the documentation indicates that by default,
     // Mongoose does not cast filter properties that aren't in your schema.

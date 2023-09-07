@@ -73,7 +73,7 @@ Adam's answer in lec:116:
 const catchAsync = asyncFunction => {
   return (request, response, next) => {
     asyncFunction(request, response, next).catch(error => {
-      // console.log(error);
+      console.log(error);
      next(error)});
   }
   /*

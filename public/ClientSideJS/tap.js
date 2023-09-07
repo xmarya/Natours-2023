@@ -1,3 +1,5 @@
+/*
+
 import axios from "axios";
 import { showAlerts } from "./alerts.cjs";
 
@@ -10,14 +12,16 @@ export const bookTour = async (tourId) => {
 
     // 2) Using TAP to automatichally create the checkout form
     //  and Charging the credit card :
-    /*
+    
     await strip.redirectTocheckout({
         sessionId: session.data.session.id // this comes from axios .
     });
-    */
+    
   } catch (error) {
     showAlerts("error", "Sorry, something went worng, Try againg");
     // console.log(error);
     
   }
 };
+
+*/

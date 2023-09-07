@@ -8,7 +8,7 @@ const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = asyncFunction => {
     return (request, response, next ) => {
         asyncFunction(request, response, next ).catch (error => {
-            // console.log(error);
+            console.log(error);
             next(error);
         });
     }

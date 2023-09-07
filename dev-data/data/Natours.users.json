@@ -1,0 +1,377 @@
+[{
+  "_id": {
+    "$oid": "5c8a1ec62f8fb814b56fa183"
+  },
+  "name": "Ayla Cornell",
+  "email": "ayls@example.com",
+  "password": "$2a$13$1HucRH1C5Zr89QY.Z34Lb.J5c0zmB1220VfCDrJMtWDncegOMvj2G",
+  "photo": "user-4.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a21d02f8fb814b56fa189"
+  },
+  "name": "Steve T. Scaife",
+  "email": "steve@example.com",
+  "password": "$2a$13$Ofd7AidjIRxoSLpOt8NNxOLRyEc.jMzzBmH1PdrJ2jr1YOidBa.ci",
+  "photo": "user-10.jpg",
+  "role": "lead-guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a21f22f8fb814b56fa18a"
+  },
+  "name": "Aarav Lynn",
+  "email": "aarav@example.com",
+  "password": "$2a$13$nTZb19V8T9Ic/WbXdk5ym.2qNQpvFErVZcjFsShLuOfY24g1bfD7S",
+  "photo": "user-11.jpg",
+  "role": "lead-guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a23412f8fb814b56fa18c"
+  },
+  "name": "Ben Hadley",
+  "email": "ben@example.com",
+  "password": "$2a$13$wb/az7Ta785pMHAtDqQc9uhaCLRT/ZzbQUM/bHrVpzQvEGjD6gFTG",
+  "photo": "user-13.jpg",
+  "role": "guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a24402f8fb814b56fa190"
+  },
+  "name": "Alexander Jones",
+  "email": "alex@example.com",
+  "password": "$2a$13$u9ZYINN0Xko06HkRErqwuOkcHUucPbTFYzV6aw7DsnLxpTUm6T5kS",
+  "photo": "user-17.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a1d5b0190b214360dc057"
+  },
+  "name": "Jonas Schmedtmann",
+  "email": "admin@natours.io",
+  "password": "$2a$13$k9rEAOsKkR6iqZ./yrtPreIh0ks8bCWkfhirFpTQeOajt.O153cYK",
+  "photo": "user-1.jpg",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a1f292f8fb814b56fa184"
+  },
+  "name": "Leo Gillespie",
+  "email": "leo@example.com",
+  "password": "$2a$13$5p06EV2NE4K6hLwTF0m24u7AmgSxOM77Usfjrq2lqcC2FrSK/Admu",
+  "photo": "user-5.jpg",
+  "role": "guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a1f4e2f8fb814b56fa185"
+  },
+  "name": "Jennifer Hardy",
+  "email": "jennifer@example.com",
+  "password": "$2a$13$vBCVW/C0KLTMlNwSt3Yzx.glhOkQMvUIGvacg98bD.rqlpFuj43me",
+  "photo": "user-6.jpg",
+  "role": "guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a201e2f8fb814b56fa186"
+  },
+  "name": "Kate Morrison",
+  "email": "kate@example.com",
+  "password": "$2a$13$DKl2XGOKN08RW0N/FZIbkOH5tnTDltrn5rznEF/Mng8GIHYFu3ubG",
+  "photo": "user-7.jpg",
+  "role": "guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a20d32f8fb814b56fa187"
+  },
+  "name": "Eliana Stout",
+  "email": "eliana@example.com",
+  "password": "$2a$13$HosEgMN2hAV1W3F3ieRsROaJesRkYkm6z2ljPYALzHmbKLpmY4Ofi",
+  "photo": "user-8.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a211f2f8fb814b56fa188"
+  },
+  "name": "Cristian Vega",
+  "email": "chris@example.com",
+  "password": "$2a$13$SSK4MKtj1GqA8wN.VAfe/un9Vn9gPWXLGfLIFYacL9xYgfwMAmxZq",
+  "photo": "user-9.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a22c62f8fb814b56fa18b"
+  },
+  "name": "Miyah Myles",
+  "email": "miyah@example.com",
+  "password": "$2a$13$LzaBkadnNhwO6ahRrhfF0OzhtdbwANMZUaseve7UE1pS6qJrChuri",
+  "photo": "user-12.jpg",
+  "role": "lead-guide",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a23c82f8fb814b56fa18d"
+  },
+  "name": "Laura Wilson",
+  "email": "laura@example.com",
+  "password": "$2a$13$eyJVWYvwD6EOVZIFcAjoYOyDWc8jYwdTKBfq7ejIuIFYATVFLAaFW",
+  "photo": "user-14.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a23de2f8fb814b56fa18e"
+  },
+  "name": "Max Smith",
+  "email": "max@example.com",
+  "password": "$2a$13$/H1NyZFpf/FbDu6dNpgQpukC9YUFjyndfPEje2M1sX3pPvW/SMsMS",
+  "photo": "user-15.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a24282f8fb814b56fa18f"
+  },
+  "name": "Isabel Kirkland",
+  "email": "isabel@example.com",
+  "password": "$2a$13$Icl7NqQ3S/BH4NTnq6JPjermQFRVHFXbSKVa3yn.ydDgRxZdC6gKi",
+  "photo": "user-16.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a245f2f8fb814b56fa191"
+  },
+  "name": "Eduardo Hernandez",
+  "email": "edu@example.com",
+  "password": "$2a$13$MKAnmEh4Hp68oyG9cYnydupEBIsYFjr6rugyqrnsIv6K07mkllNS.",
+  "photo": "user-18.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a24822f8fb814b56fa192"
+  },
+  "name": "John Riley",
+  "email": "john@example.com",
+  "password": "$2a$13$a3ypgIqBzFY6crhB74lTJ.xefzZ.7G9VdQxZF1H.bvx2lDEdh/bMy",
+  "photo": "user-19.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a24a02f8fb814b56fa193"
+  },
+  "name": "Lisa Brown",
+  "email": "lisa@example.com",
+  "password": "$2a$13$gXV6oSqqIFR9xziPPZA3NewpbUl8flEaOp2K53dgCEo01z4fU5oeq",
+  "photo": "user-20.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a1dfa2f8fb814b56fa181"
+  },
+  "name": "Lourdes Browning",
+  "email": "loulou@example.com",
+  "password": "$2a$13$N82FyH/I3pu/e.icU9HpB./atQhQ/XSBd9urFYLcCvKhhIPUJU.5S",
+  "photo": "user-2.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "5c8a1e1a2f8fb814b56fa182"
+  },
+  "name": "Sophie Louise Hart",
+  "email": "sophie@example.com",
+  "password": "$2a$13$Dcs4dAbdY3H0YXIBWNbbIupd2I0UT/jG7EwP/i8jL4m/rxJ2hpp06",
+  "photo": "user-3.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-21T05:35:30.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e2fedec10a02b57417ade7"
+  },
+  "name": "it's me Marya",
+  "email": "itsmarya@hotmail.com",
+  "password": "$2a$13$yCe4pjvJsnmnhZMHpNw5seC0q1Afhmvk3UHWx9imddN4EdOF7snn2",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2023-08-21T06:06:22.773Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-31T04:59:21.431Z"
+  },
+  "__v": 0,
+  "photo": "user-64e2fedec10a02b57417ade7-1693457961425.jpeg",
+  "passwordChangedAt": {
+    "$date": "2023-08-28T09:06:40.897Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f6d4e3f747080c060997cc"
+  },
+  "name": "hotmailuser",
+  "email": "missmeme1416@hotmail.com",
+  "password": "$2a$13$CfsKM.LbKeS4/.GzFkDG6eVcCZUv2DIQ6LrzgyimgWT1zJfQsf0zG",
+  "photo": "default.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2023-09-05T07:12:35.046Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-05T07:12:35.046Z"
+  },
+  "__v": 0
+}]
