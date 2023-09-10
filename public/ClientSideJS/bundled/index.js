@@ -704,7 +704,12 @@ const logout = async ()=>{
         /*
        just use location.replace instead of assign inorder to discard current page from the history 
        and then load new document
-    */ if (result.status === "success") location.reload(true); // true for forcing the reload from the server and not from the browser cache .
+    */ if (result.status === "success") /*
+      I changed this because when the user logged out while still inside one of the protected routes (myBookings, myProfile), 
+      the same protected page was going to reload with an unloged-in user so an error message was going to appear . 
+      and the correct behaviour in this case is to redirect the user to the home page
+      location.reload(true); // true for forcing the reload from the server and not from the browser cache .
+    */ setTimeout(()=>window.location.assign("/"), 1000);
     } catch (error) {
         (0, _alertsCjs.showAlerts)("error", "Error has occurred while logging out, try again");
     }
