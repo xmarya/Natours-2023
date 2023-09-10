@@ -722,11 +722,11 @@ const hideAlerts = ()=>{
     const el = document.querySelector(".alert");
     if (el) el.parentElement.removeChild(el);
 };
-const showAlerts = (type, msg)=>{
+const showAlerts = (type, msg, time = 4)=>{
     hideAlerts();
     const htmlCode = `<div class="alert alert--${type}">${msg}</div>`;
     document.querySelector("body").insertAdjacentHTML("afterbegin", htmlCode);
-    window.setTimeout(hideAlerts, 4000);
+    window.setTimeout(hideAlerts, time * 1000);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"irOwI"}],"irOwI":[function(require,module,exports) {
