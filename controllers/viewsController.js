@@ -79,7 +79,7 @@ if (response.locals.user) { // here we applied the same logic for request.user w
     // console.log("1 ", bookings);
     
     
-    const userBookedTour = bookings.map(el => el.tour); // 2) Extracting the tours data (id, name, guides) from the user data
+    const userBookedTour = bookings.map(el => el.tour); // 2) Extracting the tours data (id, name, guides -which is populated because of pre(/^find/) hook) from the user data
 
     if (userBookedTour) {
       
