@@ -12,5 +12,6 @@ export const signup = async (data) => {
     if (result.status !== "success") return;
   } catch (error) {
     showAlerts("error", error.message);
+    setTimeout(() => location.reload(), 1.5 * 1000);
   }
 };

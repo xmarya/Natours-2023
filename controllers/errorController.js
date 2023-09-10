@@ -73,11 +73,9 @@ const dbDuplicateKeyHandler = (error) => {
 
   // this type of error does't have a name property because it wasn't caused by mongoose but by mongoDB driver , so, we're going to use code property .
   // const message = `Duplicated field value: (${error.keyValue.name}) Please use another value .`;
+  const message = `Duplicated field value: (${Object.values(error.keyValue)[0]}) Please use another value .`;
 
-  return new AppError(
-    400,
-    `Duplicated field value: (${error.keyValue}) Please use another value .`
-  ); // ==> error.keyValue.name is undefined
+  return new AppError(400, message); // ==> error.keyValue.name is undefined
 };
 
 const dbValidationErrorHandler = (error) => {
