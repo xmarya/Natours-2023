@@ -1,8 +1,41 @@
+import { signup } from "./signup";
 import { login, logout } from "./login.cjs";
 import { updateTheProfile } from "./updateProfile";
 import { bookTour } from "./tap";
 
-const handleSubmit = (event) => {
+// const handleSubmit = (event) => {
+//   event.preventDefault();
+
+//   const email = event.target.email?.value;
+//   const password = event.target.password?.value;
+// // console.log(email, password);
+//   login(email, password);
+
+//   formEl.reset();
+// };
+
+// All of the IFs here are to prevent CAN'T READ NULL .FROM when we're in pages that doesn't have form element .
+
+const formSignup = document.querySelector(".form--signup");
+if(formSignup) formSignup.addEventListener("submit", (event) => {
+  console.log("formSignup eventListener INSIDER");
+  
+  event.preventDefault();
+  document.querySelector(".btn--form-signup").textContent = "Processing...";
+
+
+  const name = event.target.username.value;
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+  const passwordConfirm = event.target.passwordConfirm.value;
+
+  signup({name, email, password, passwordConfirm});
+  formSignup.reset();
+
+});
+
+const formEl = document.querySelector(".form--login");
+if (formEl) formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const email = event.target.email?.value;
@@ -11,10 +44,7 @@ const handleSubmit = (event) => {
   login(email, password);
 
   formEl.reset();
-};
-
-const formEl = document.querySelector(".form--login");
-if (formEl) formEl.addEventListener("submit", handleSubmit); // to prevent CAN'T READ NULL .FROM when we're in pages that doesn't have form element .
+}); 
 
 const logoutBtn = document.querySelector(".nav__el--logout");
 if (logoutBtn) logoutBtn.addEventListener("click", logout);
@@ -24,6 +54,7 @@ const profileForm = document.querySelector(".form-user-data");
 if (profileForm) {  
   profileForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    document.querySelector(".btn--save-settings").textContent = "Updating...";
 
     /* OLD CODE
     const form = new FormData();
@@ -66,19 +97,15 @@ if (passwordForm)
     const newPassword = document.getElementById("password-new").value;
     const confirmNewPassword =
       document.getElementById("password-confirm").value;
-    await updateTheProfile(
-      { currentPassword, newPassword, confirmNewPassword },
-      "password"
-    );
+    await updateTheProfile({ currentPassword, newPassword, confirmNewPassword }, "password");
 
     passwordForm.reset();
     document.querySelector(".btn--save-password").textContent = "Save Password";
   });
 
-  const bookingBtn = document.getElementById("bookTour");
+  const bookingBtn = document.getElementById("book-tour");
 if(bookingBtn)
     bookingBtn.addEventListener("click", event => {
-  // console.log("bookingBtn INSIDER");
   
       /*
 
@@ -91,6 +118,6 @@ if(bookingBtn)
 
       */
       bookingBtn.textContent = "Processing...";
-      const {tourId} = event.target.dataset;
+      const {tourId} = event.target.dataset;      
       bookTour(tourId);
   });

@@ -8,45 +8,37 @@ const timeout = (sec) =>
     );
   });
 
-export const useFetch = async (url, methodType, uploadData = null, type ) => {
-  // console.log("useFetch INSIDER",uploadData);
-  
+export const useFetch = async (url, methodType, uploadData = null, type) => {
+
   let options;
 
   if (type === "profile") {
-    
     const formData = new FormData();
     for (const name in uploadData) {
       formData.append(name, uploadData[name]);
     }
 
     options = { method: methodType, body: formData };
+  } else {
+
+    options = {
+      method: methodType,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(uploadData),
+    };
   }
 
-  else {
-    options = {
-    method: methodType,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(uploadData),
-  };
-  // console.log(options.method, options.body);
-
-}
-
-
   try {
-    const request = uploadData ? fetch(url, {...options}) : fetch(url);
-
-    const response = await Promise.race([
-      request,
-      timeout(REQUEST_TIMEOUT_SEC),
-    ]);
+    const request = uploadData ? fetch(url, { ...options }) : fetch(url);
+    
+    const response = await Promise.race([request, timeout(REQUEST_TIMEOUT_SEC),]);
 
     const data = await response.json();
 
     if (!response.ok) throw Error(data.message);
-
+    
     return data;
+    
   } catch (error) {
     if (error.message === "Failed to fetch")
       error.message = `Unable to reach the server. Please check your internet connection...`;

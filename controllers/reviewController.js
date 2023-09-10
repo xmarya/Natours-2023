@@ -40,6 +40,6 @@ exports.checkOwner = catchAsync( async(request, response, next) => {
     next();
   });
 
-exports.writeAReview = factory.createOne(Review);
+exports.writeReview = factory.createOne(Review);
 exports.updateReview = factory.updateOne(Review);
 exports.deleteReview = factory.deleteOne(Review);

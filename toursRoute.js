@@ -16,6 +16,7 @@ const {
 
 const {protect, restrict} = require("./controllers/authController");
 const reviewsRoutr = require("./reviewsRoute");
+// const bookingRouter = require("./Routes/bookingsRoute");
 
 // create a new router and save it to a variable, then we will use it instead of app:
 const router = express.Router();
@@ -43,6 +44,7 @@ router.route('/').get(getAllTours).post(checkBody,createTour);
 
 
 router.use("/:tourId/reviews", reviewsRoutr);
+// router.use("/:tourId/bookings", bookingRouter);
 
 // creating AGGR query's route
 router.route("/tour-stats").get(getTourStats);

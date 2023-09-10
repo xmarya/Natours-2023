@@ -12,12 +12,12 @@ const errorDevelopment = (error, request, response) => {
       error,
     });
   }
-    // it's not a programming related error so we want to render it to the page for the users.
-    return response.status(error.statusCode).render("error", {
-      // for rendered website
-      title: "Somthing went wrong",
-      msg: error.message,
-    });
+  // it's not a programming related error so we want to render it to the page for the users.
+  return response.status(error.statusCode).render("error", {
+    // for rendered website
+    title: "Somthing went wrong",
+    msg: error.message,
+  });
 };
 
 /*
@@ -28,7 +28,6 @@ const errorDevelopment = (error, request, response) => {
   و طبعًا نفس الشي يصير مع نيكست() لمن تكون داخل بلوك
 */
 const errorProduction = (error, request, response) => {
-  
   if (request.originalUrl.startsWith("/api")) {
     // for API
     // we don't wamt to send any programming errors details to the user so we breaked the response into if else blocks .
@@ -62,14 +61,23 @@ const errorProduction = (error, request, response) => {
 };
 
 const dbCastErrorHandler = (error) => {
-  const message = `dbCastErrorHandler: Invalid ${error.path}: ${error.value}`;
+  const message = `Invalid ${error.path}: ${error.value}`;
   return new AppError(400, message);
 };
 
 const dbDuplicateKeyHandler = (error) => {
+  console.log("THE ERROR IS ==>", error);
+  console.log("error.keyPattern.name IS ==> ", error.keyPattern.name);
+  console.log("error.keyValue.name IS ==> ", error.keyValue.name);
+  console.log("error.keyValue IS ==> ", error.keyValue);
+
   // this type of error does't have a name property because it wasn't caused by mongoose but by mongoDB driver , so, we're going to use code property .
-  const message = `dbDuplicateKeyHandler: Duplicated field value: (${error.keyValue.name}) Please use another value .`;
-  return new AppError(400, message);
+  // const message = `Duplicated field value: (${error.keyValue.name}) Please use another value .`;
+
+  return new AppError(
+    400,
+    `Duplicated field value: (${error.keyValue}) Please use another value .`
+  ); // ==> error.keyValue.name is undefined
 };
 
 const dbValidationErrorHandler = (error) => {
@@ -77,23 +85,21 @@ const dbValidationErrorHandler = (error) => {
   const allErrorsMesgs = Object.values(error.errors).map(
     (element) => element.message
   );
-  const message = `dbValidationErrorHandler: Invalid input data. ${allErrorsMesgs.join(
-    ". "
-  )}`;
+  const message = `${allErrorsMesgs.join(". ")}`;
   return new AppError(400, message);
 };
 
 const jwtInvalidToken = () => {
   return new AppError(
     401,
-    "jwtInvalidToken: Something is wrong ! please try to logout and login again ♥"
+    "Something is wrong ! please try to logout and login again ♥"
   );
 };
 
 const jwtTokenExpiredError = () => {
   return new AppError(
     401,
-    "jwtTokenExpiredError: Something is wrong ! please try to logout and login again ♥"
+    "Something is wrong ! please try to logout and login again ♥"
   );
 };
 

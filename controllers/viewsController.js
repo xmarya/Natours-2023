@@ -62,21 +62,25 @@ exports.getOverview = catchAsync(async (request, response, next) => {
 });
 
 exports.getTourDetails = catchAsync(async (request, response, next) => {
+  console.log("getTourDetails ViewsController INSIDER");
+  
   // 1) Getting the data of selected tour (including reviews and guides):
   const tour = await Tour.findOne({ slug: request.params.slug }).populate({
     path: "reviews",
     select: "text writer rating",
   });
 
-  if (!tour) return next(new AppError(404, "No tour with this name"));
+if (!tour) return next(new AppError(404, "No tour with this name"));
 
-      // User can only book a tour once :
-  if (request.user) {
-    const bookings = await Booking.find({ user: request.user.id });
+// User can only book a tour once :
+if (response.locals.user) { // here we applied the same logic for request.user when the user information is provided by the protect md
+                            // but in this case, the user information is available inside the response.locals because be passed the current user inside logInOrNot md
+    const bookings = await Booking.find({ user: response.locals.user.id });
+    
     const tourIDs = bookings.map(el => el.tour);
+    
     const userBookedTour = await Tour.find({ _id: { $in: tourIDs } });
-    // console.log(userBookedTour);
-  
+    
     if (userBookedTour) {
       userBookedTour.forEach(tour => {
         if (tour.id === tour.id) {
@@ -85,16 +89,22 @@ exports.getTourDetails = catchAsync(async (request, response, next) => {
       });
     }
   }
-
+  
   // 2) Building the Template :
-
+  
   // 3) Injecting the data into the Template then Rendring it :
-
+  
   response.status(200).render("tour", {
     title: `${tour.name} Tour`,
     tour,
   });
 });
+
+exports.getSignupForm = (_, response) => {
+  response.status(200).render("signup", {
+    title: "Signup"
+  })
+}
 
 exports.getLoginForm = (_, response) => {
   response.status(200).render("login", {
@@ -106,5 +116,19 @@ exports.userProfile = catchAsync(async (request, response, next) => {
   response.status(200).render("profile",{
     title: "My profile",
     user: request.user
+  });
+});
+
+exports.getMyBookings = catchAsync( async(request, response, next) => {
+  // 1) Finding all the tours of the currently logged in user has booked :
+  const bookings = await Booking.find({user: request.user.id});
+
+  // 2) Finding the tours based on the ids we got from the logged in user :
+  const tourIds = bookings.map(element => element.tour); // here, no nedd to specify it like this "element.tour.id" because the tour itself is an id .
+  const tours = await Tour.find({ _id: {$in: tourIds}}); // here, we didn't use findById because we needed a new operator .
+  
+  response.status(200).render("overview",{
+    title: "My bookings",
+    tours
   });
 });

@@ -5,6 +5,8 @@ const {
   getTourDetails,
   getLoginForm,
   userProfile,
+  getSignupForm,
+  getMyBookings
 } = require("../controllers/viewsController");
 // const { updateProfile } = require("../public/js/updateProfile.js");
 const { protect } = require("../controllers/authController");
@@ -28,9 +30,9 @@ const router = express.Router();
         }); 
       });
 */
-
 router.get("/", logInOrNot, getOverview);
 router.get("/tour/:slug", logInOrNot, getTourDetails);
+router.get("/signup", getSignupForm, getOverview); // redirect the user to the home page to login after finishing the signing up process .
 router.get("/login", logInOrNot, getLoginForm);
 router.get("/myProfile", protect, userProfile); // we used protect md here because we want it to be a protected route
 // note that it's not a protected template so logInOrNot md isn't the one we should have used
@@ -39,6 +41,7 @@ router.get("/myProfile", protect, userProfile); // we used protect md here becau
     The isLoggedIn is just to ensure that the user needs to be logged in in order to access certain routes or perform certain operations.
 */
 
+router.get("/myBookings", protect, logInOrNot, getMyBookings);
 // router.post("/submit-user-data", protect, noJSUpdateProfile);
 
 // router.post("/submit-user-data", protect, updateProfile);

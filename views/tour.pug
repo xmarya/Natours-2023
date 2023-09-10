@@ -123,6 +123,6 @@ block content
                 if user && !alreadyBooked
                     button.btn.btn--green.span-all-rows#book-tour(data-tour-id=`${tour.id}`) Book tour now!
                 else if alreadyBooked
-                    a.btn.btn--green.span-all-rows(href="/my-tours") Already Booked this tour
+                    a.btn.btn--green.span-all-rows(href="/myBookings") Already Booked this tour
                 else
                     a.btn.btn--green.span-all-rows(href="/login") Login to Book tour!

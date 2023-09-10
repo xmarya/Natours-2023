@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllReviews, writeAReview, setTourUser, deleteReview, updateReview, checkOwner } = require("./controllers/reviewController");
+const { getAllReviews, writeReview, setTourUser, deleteReview, updateReview, checkOwner } = require("./controllers/reviewController");
 const { checkIfBooked } = require("./controllers/bookingsController");
 const { protect, restrict } = require("./controllers/authController");
 
@@ -16,6 +16,6 @@ const { protect, restrict } = require("./controllers/authController");
 */
 const router = express.Router({ mergeParams: true });
 
-router.route("/").get(getAllReviews).post(protect, restrict("user"),setTourUser,  writeAReview);
+router.route("/").get(getAllReviews).post(protect, restrict("user"),setTourUser,  writeReview);
 router.route("/:id").patch(protect, restrict("user", "admin"), updateReview).delete(protect, restrict("user", "admin"), checkOwner, deleteReview);
 module.exports = router;

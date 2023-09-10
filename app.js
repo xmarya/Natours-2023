@@ -17,7 +17,7 @@ const viewRouter = require("./Routes/viewsRoute");
 const cookieParser = require("cookie-parser"); // in order to get access to the cookies that are inside the request .
 
 const compression = require("compression");
-
+const cors = require("cors");
 // 1) telling express which template engine we are going to use:
 app.set("view engine", "pug");
 
@@ -95,6 +95,23 @@ app.use(
 because we're not prepared for recieving mare than one parameters of the same type of fields */
 
 app.use(compression()); // it's going to return a md function which job is compression all the test that is send to the client -images are not included because they are already compressed-
+
+
+app.use(cors()); // is going to return a md to set different headers to our response.
+// which allow other requests no matter where they came from to access the whole api resources.
+// we also can just specify one route to be accessible like this:
+// app.use("/api/v1/users", cors(), userRouter).
+// BUT this is just the first step of implementing cors
+// here we just allowd the simple requests (GET and POST)
+// so we have to implement it for the non-simple requests (PUT, PATCH, DELETE, requests that send cookies and requests that uses non-standard headers).
+// NSRs require a so-called preflight phase, which issues by the browser automatically.
+// let's say we have a DELETE request, before this request actually happens
+// the browser does an OPTION request in order to figure out whether the DELETE request is safe to send or not,
+// so as developers we need to respond to that OPTION request .
+app.options("*", cors()); // OPTION is another HTTP method like GET, POST.. etc.
+// and here we applied it to all of our routes .
+
+
 
 // define a route :
 /**

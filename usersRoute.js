@@ -1,6 +1,7 @@
 const express = require("express");
 const {getAllUsers, getUser, myProfile, createUser, updateMyData, updateMyPhoto, updateUserByAdmin, deleteMyAccount} = require(`${__dirname}/controllers/usersController`);
 const {protect, restrict, signup, login, logout, forgetPassword, resetPassword, updateMyPassword} = require(`${__dirname}/controllers/authController`);
+// const bookingRouter = require("./Routes/bookingsRoute");
 // const {deleteOldPhotos} = require("./utils/deleteOldPhotos");
 // const multer = require("multer");
 // const upload  = multer({dest: "public/img/users"});
@@ -24,6 +25,7 @@ router.patch("/resetPassword/:randomToken", resetPassword); // its patch because
 router.use(protect);
                         // this md will fake the id to be like it's coming from the url. then it will be passed to getUser.
 router.get("/myProfile", myProfile, getUser);
+// router.use("/:userId/bookings", bookingRouter);
 
 router.patch("/updateMyPassword", updateMyPassword);
 router.patch("/updateMyData", updateMyPhoto, updateMyData);

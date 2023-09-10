@@ -42,7 +42,7 @@ export const updateTheProfile = async (data, type) => {
     const result = await useFetch(`/api/v1/users/${url}`,"PATCH", data, type);
     // console.log(result.status);
 
-    if (result.status.trim() === "success") showAlerts("success", `Your ${type}'s been updated successfully !♥`);
+    if (result.status === "success") showAlerts("success", `Your ${type}'s been updated successfully !♥`);
     
   } catch (error) {
     showAlerts("error", error.message);

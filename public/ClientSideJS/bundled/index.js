@@ -573,24 +573,51 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"aSS4S":[function(require,module,exports) {
+var _signup = require("./signup");
 var _loginCjs = require("./login.cjs");
 var _updateProfile = require("./updateProfile");
 var _tap = require("./tap");
-const handleSubmit = (event)=>{
+// const handleSubmit = (event) => {
+//   event.preventDefault();
+//   const email = event.target.email?.value;
+//   const password = event.target.password?.value;
+// // console.log(email, password);
+//   login(email, password);
+//   formEl.reset();
+// };
+// All of the IFs here are to prevent CAN'T READ NULL .FROM when we're in pages that doesn't have form element .
+const formSignup = document.querySelector(".form--signup");
+if (formSignup) formSignup.addEventListener("submit", (event)=>{
+    console.log("formSignup eventListener INSIDER");
+    event.preventDefault();
+    document.querySelector(".btn--form-signup").textContent = "Processing...";
+    const name = event.target.username.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const passwordConfirm = event.target.passwordConfirm.value;
+    (0, _signup.signup)({
+        name,
+        email,
+        password,
+        passwordConfirm
+    });
+    formSignup.reset();
+});
+const formEl = document.querySelector(".form--login");
+if (formEl) formEl.addEventListener("submit", (event)=>{
     event.preventDefault();
     const email = event.target.email?.value;
     const password = event.target.password?.value;
     // console.log(email, password);
     (0, _loginCjs.login)(email, password);
     formEl.reset();
-};
-const formEl = document.querySelector(".form--login");
-if (formEl) formEl.addEventListener("submit", handleSubmit); // to prevent CAN'T READ NULL .FROM when we're in pages that doesn't have form element .
+});
 const logoutBtn = document.querySelector(".nav__el--logout");
 if (logoutBtn) logoutBtn.addEventListener("click", (0, _loginCjs.logout));
 const profileForm = document.querySelector(".form-user-data");
 if (profileForm) profileForm.addEventListener("submit", (event)=>{
     event.preventDefault();
+    document.querySelector(".btn--save-settings").textContent = "Updating...";
     /* OLD CODE
     const form = new FormData();
   
@@ -634,9 +661,8 @@ if (passwordForm) passwordForm.addEventListener("submit", async (event)=>{
     passwordForm.reset();
     document.querySelector(".btn--save-password").textContent = "Save Password";
 });
-const bookingBtn = document.getElementById("bookTour");
+const bookingBtn = document.getElementById("book-tour");
 if (bookingBtn) bookingBtn.addEventListener("click", (event)=>{
-    // console.log("bookingBtn INSIDER");
     /*
 
       inside tour.pug we've defined the dataset varible as tour-id
@@ -651,7 +677,7 @@ if (bookingBtn) bookingBtn.addEventListener("click", (event)=>{
     (0, _tap.bookTour)(tourId);
 });
 
-},{"./login.cjs":"6R3Si","./updateProfile":"cXZ1w","./tap":"6gNS0"}],"6R3Si":[function(require,module,exports) {
+},{"./login.cjs":"6R3Si","./updateProfile":"cXZ1w","./tap":"6gNS0","./signup":"j5PUJ"}],"6R3Si":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "login", ()=>login);
@@ -742,7 +768,6 @@ const timeout = (sec)=>new Promise((_, reject)=>{
         setTimeout(()=>reject(Error(`Request timed out. Please try again later...`)), sec * 1000);
     });
 const useFetch = async (url, methodType, uploadData = null, type)=>{
-    // console.log("useFetch INSIDER",uploadData);
     let options;
     if (type === "profile") {
         const formData = new FormData();
@@ -822,19 +847,37 @@ const updateTheProfile = async (data, type)=>{
         const url = type === "password" ? "updateMyPassword" : "updateMyData";
         const result = await (0, _fetchData.useFetch)(`/api/v1/users/${url}`, "PATCH", data, type);
         // console.log(result.status);
-        if (result.status.trim() === "success") (0, _alertsCjs.showAlerts)("success", `Your ${type}'s been updated successfully !♥`);
+        if (result.status === "success") (0, _alertsCjs.showAlerts)("success", `Your ${type}'s been updated successfully !♥`);
     } catch (error) {
         (0, _alertsCjs.showAlerts)("error", error.message);
     }
 };
 
 },{"./alerts.cjs":"gZtpb","./fetchData":"9rslJ","@parcel/transformer-js/src/esmodule-helpers.js":"irOwI"}],"6gNS0":[function(require,module,exports) {
-/*
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "bookTour", ()=>bookTour);
+var _fetchData = require("./fetchData");
+var _alertsCjs = require("./alerts.cjs");
+const bookTour = async (tourId)=>{
+    try {
+        const result = await (0, _fetchData.useFetch)(`/api/v1/bookings/checkout/${tourId}`, "POST", {
+            tourId
+        });
+        if (result.status === "success") {
+            (0, _alertsCjs.showAlerts)("success", "Your've booked one tour successfully");
+            setTimeout(()=>location.assign("/myBookings"), 1500);
+        }
+    } catch (error) {
+        (0, _alertsCjs.showAlerts)("error", error.message);
+    // setTimeout(() => location.assign("/myBookings"), 1.5 * 1000);
+    }
+} /*
 
 import axios from "axios";
 import { showAlerts } from "./alerts.cjs";
 
-export const bookTour = async (tourId) => {
+export const payTour = async (tourId) => {
   try {
     // 1) Getting the session of the server by using
     //  the route of /cheaout-session endpoint:
@@ -855,7 +898,27 @@ export const bookTour = async (tourId) => {
   }
 };
 
-*/ 
-},{}]},["h7ScW","aSS4S"], "aSS4S", "parcelRequire11c7")
+*/ ;
+
+},{"./alerts.cjs":"gZtpb","@parcel/transformer-js/src/esmodule-helpers.js":"irOwI","./fetchData":"9rslJ"}],"j5PUJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "signup", ()=>signup);
+var _fetchData = require("./fetchData");
+var _alertsCjs = require("./alerts.cjs");
+const signup = async (data)=>{
+    try {
+        const result = await (0, _fetchData.useFetch)("/api/v1/users/signup", "POST", data);
+        if (result.status === "success") {
+            (0, _alertsCjs.showAlerts)("success", "Your account on Natours is ready ! login and Start the Adventures");
+            setTimeout(()=>location.assign("/"), 1500);
+        }
+        if (result.status !== "success") return;
+    } catch (error) {
+        (0, _alertsCjs.showAlerts)("error", error.message);
+    }
+};
+
+},{"./alerts.cjs":"gZtpb","@parcel/transformer-js/src/esmodule-helpers.js":"irOwI","./fetchData":"9rslJ"}]},["h7ScW","aSS4S"], "aSS4S", "parcelRequire11c7")
 
 //# sourceMappingURL=index.js.map

@@ -1,7 +1,8 @@
 const Booking = require("../models/bookingModel");
 const Tour = require("../models/tourModel");
-const factory = require("./../controllers/factoryController");
-const AppError = require("./../utils/appError");
+const User = require("../models/userModel");
+const factory = require("../controllers/factoryController");
+const AppError = require("../utils/appError");
 
 const catchAsync = (asyncFunction) => {
     return (request, response, next) => {
@@ -11,29 +12,38 @@ const catchAsync = (asyncFunction) => {
     }
 }
 
-exports.getCheckoutSession = catchAsync( async(request, response, next) => {
-    // 1) Getting the wanted tour :
-    const tour = await Tour.findById(request.params.tourId);
-
-    // 2) Creating the chechout session :
-    // const session = await
-  
-
-    // 3) Sending it to the clint :
-
-    response.status(200).json({
+exports.addNewBooking = catchAsync( async(request, response, next) =>{
+    // const tour = await Tour.findById(request.params.tourId);
+    // const user = await User.findById(request.user.id);
+    // request.body = {tour, user};
+    const newDoc = await Booking.create(request.body);
+    
+    response.status(201).json({
         status: "success",
-        session
+        newDoc
     });
 });
 
-/*
-Google Pay API allows you to accept payments from your customers using their Google Pay accounts
-Stripe
-PayPal
-Braintree
+exports.getCheckout = catchAsync( async(request, response, next) => {   
+    const tour = await Tour.findById(request.params.tourId);
+    const user = await User.findById(request.user.id);
+    await Booking.create({tour, user});    
+    response.status(201).json({
+        status: "success",
+    });
+    
 
-*/
+});
+
+exports.getAllBookings = catchAsync( async(request, response, next) => {
+    const bookings = await Booking.find();
+
+    response.status(200).json({
+        status: "success",
+        result: bookings.length,
+        bookings
+    });
+});
 
 // preventing any user of writing a review for tours they haven't booked
 exports.checkIfBooked = catchAsync( async(request, response, next) => {

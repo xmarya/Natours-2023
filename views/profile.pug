@@ -12,8 +12,8 @@ block content
         .user-view
             nav.user-view__menu
                 ul.side-nav
-                    +navItem("#", "Settings", "settings", true)
-                    +navItem("#", "My bookings", "briefcase", true)
+                    +navItem("/myProfile", "Settings", "settings", true)
+                    +navItem("/myBookings", "My bookings", "briefcase", true)
                     +navItem("#", "My reviews", "star", true)
                     +navItem("#", "Billing", "credit-card", true)
 
@@ -40,7 +40,7 @@ block content
                             input.form__upload(id="photo" name="photo" type="file", accept="image/*")
                             label(for="photo") Choose a new photo
                         .form__group.right
-                            button.btn.btn--small.btn--green Save settings
+                            button.btn.btn--small.btn--green.btn--save-settings Save settings
                 .line &nbsp;
                 .user-view__form-container
                     h2.heading-secondary.ma-bt-md Password change
