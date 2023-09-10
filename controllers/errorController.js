@@ -66,10 +66,10 @@ const dbCastErrorHandler = (error) => {
 };
 
 const dbDuplicateKeyHandler = (error) => {
-  console.log("THE ERROR IS ==>", error);
-  console.log("error.keyPattern.name IS ==> ", error.keyPattern.name);
-  console.log("error.keyValue.name IS ==> ", error.keyValue.name);
-  console.log("error.keyValue IS ==> ", error.keyValue);
+  // console.log("THE ERROR IS ==>", error);
+  // console.log("error.keyPattern.name IS ==> ", error.keyPattern.name);
+  // console.log("error.keyValue.name IS ==> ", error.keyValue.name);
+  // console.log("error.keyValue IS ==> ", error.keyValue);
 
   // this type of error does't have a name property because it wasn't caused by mongoose but by mongoDB driver , so, we're going to use code property .
   // const message = `Duplicated field value: (${error.keyValue.name}) Please use another value .`;
