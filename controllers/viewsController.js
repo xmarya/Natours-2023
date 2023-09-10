@@ -79,16 +79,9 @@ if (response.locals.user) { // here we applied the same logic for request.user w
     // console.log("1 ", bookings);
     
     
-    const tourIDs = bookings.map(el => el.tour); // 2) Extracting the tours from the user data
-    // console.log("2 ", tourIDs);
-    
-    
-    const userBookedTour = await Tour.find({ _id: { $in: tourIDs } });
-    // console.log("3 ", userBookedTour);
-    
-    
+    const userBookedTour = bookings.map(el => el.tour); // 2) Extracting the tours data (id, name, guides) from the user data
+
     if (userBookedTour) {
-      console.log("4 ", userBookedTour);
       
       userBookedTour.forEach(bookedTours => {
         if (bookedTours.id === tour.id) {
