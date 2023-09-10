@@ -75,15 +75,23 @@ if (!tour) return next(new AppError(404, "No tour with this name"));
 // User can only book a tour once :
 if (response.locals.user) { // here we applied the same logic for request.user when the user information is provided by the protect md
                             // but in this case, the user information is available inside the response.locals because be passed the current user inside logInOrNot md
-    const bookings = await Booking.find({ user: response.locals.user.id });
+    const bookings = await Booking.find({ user: response.locals.user.id }); // 1) Getting this particular user data from booking DB .
+    // console.log("1 ", bookings);
     
-    const tourIDs = bookings.map(el => el.tour);
+    
+    const tourIDs = bookings.map(el => el.tour); // 2) Extracting the tours from the user data
+    // console.log("2 ", tourIDs);
+    
     
     const userBookedTour = await Tour.find({ _id: { $in: tourIDs } });
+    // console.log("3 ", userBookedTour);
+    
     
     if (userBookedTour) {
-      userBookedTour.forEach(tour => {
-        if (tour.id === tour.id) {
+      console.log("4 ", userBookedTour);
+      
+      userBookedTour.forEach(bookedTours => {
+        if (bookedTours.id === tour.id) {
           response.locals.alreadyBooked = true; // passing this new variable to pug.
         }
       });
